@@ -1,10 +1,10 @@
 name: MacOS
 on: 
-  # push:
-  #   paths:
-  #     - 'QtScrcpy/**'
-  #     - '!QtScrcpy/res/**'
-  #     - '.github/workflows/macos.yml'
+  push:
+    paths:
+      - 'QtScrcpy/**'
+      - '!QtScrcpy/res/**'
+      - '.github/workflows/macos.yml'
   # pull_request:
   #   paths:
   #     - 'QtScrcpy/**'
