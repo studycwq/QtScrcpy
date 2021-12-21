@@ -141,28 +141,28 @@ bool Server::execute()
 
         args << "/"; // unused;
     args << "com.genymobile.scrcpy.Server";
-    args << Config::getInstance().getServerVersion();
-    args << Config::getInstance().getLogLevel();
-    args << QString::number(m_params.maxSize);
-    args << QString::number(m_params.bitRate);
-    args << QString::number(m_params.maxFps);
-    args << QString::number(m_params.lockVideoOrientation);
-    args << (m_tunnelForward ? "true" : "false");
+    // args << Config::getInstance().getServerVersion();
+    args << "log_level=" + Config::getInstance().getLogLevel();
+    args << "max_size=" + QString::number(m_params.maxSize);
+    args << "bit_rate=" + QString::number(m_params.bitRate);
+    args << "max_fps=" + QString::number(m_params.maxFps);
+    args << "lock_video_orientation=" + QString::number(m_params.lockVideoOrientation);
+    args << "tunnel_forward=" + (m_tunnelForward ? "true" : "false");
     if (m_params.crop.isEmpty()) {
-        args << "-";
+        args << "crop=-";
     } else {
-        args << m_params.crop;
+        args << "crop=" + m_params.crop;
     }
-    args << "true"; // always send frame meta (packet boundaries + timestamp)
-    args << (m_params.control ? "true" : "false");
-    args << "0";                                     // display id
-    args << "false";                                 // show touch
-    args << (m_params.stayAwake ? "true" : "false"); // stay awake
+    args << "send_frame_meta=true"; // always send frame meta (packet boundaries + timestamp)
+    args << "control=" + (m_params.control ? "true" : "false");
+    args << "display_id=0";                                     // display id
+    args << "show_touches=false";                                 // show touch
+    args << "stay_awake=" + (m_params.stayAwake ? "true" : "false"); // stay awake
     // code option
     // https://github.com/Genymobile/scrcpy/commit/080a4ee3654a9b7e96c8ffe37474b5c21c02852a
     // <https://d.android.com/reference/android/media/MediaFormat>
-    args << Config::getInstance().getCodecOptions();
-    args << Config::getInstance().getCodecName();
+    args << "codec_options=" + Config::getInstance().getCodecOptions();
+    args << "encoder_name=" + Config::getInstance().getCodecName();
 
 #ifdef SERVER_DEBUGGER
     qInfo("Server debugger waiting for a client on device port " SERVER_DEBUGGER_PORT "...");
