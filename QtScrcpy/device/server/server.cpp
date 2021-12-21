@@ -141,7 +141,7 @@ bool Server::execute()
 
         args << "/"; // unused;
     args << "com.genymobile.scrcpy.Server";
-    // args << Config::getInstance().getServerVersion();
+    args << Config::getInstance().getServerVersion();
     args << QString("log_level=%1").arg(Config::getInstance().getLogLevel());
     args << QString("max_size=%1").arg(QString::number(m_params.maxSize));
     args << QString("bit_rate=%1").arg(QString::number(m_params.bitRate));
