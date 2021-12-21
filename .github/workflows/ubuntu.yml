@@ -1,16 +1,16 @@
 name: Ubuntu
 # Qt官方没有linux平台的x86包
 on: 
-  push:
-    paths:
-      - 'QtScrcpy/**'
-      - '!QtScrcpy/res/**'
-      - '.github/workflows/ubuntu.yml'
-  pull_request:
-    paths:
-      - 'QtScrcpy/**'
-      - '!QtScrcpy/res/**'
-      - '.github/workflows/ubuntu.yml'
+  # push:
+  #   paths:
+  #     - 'QtScrcpy/**'
+  #     - '!QtScrcpy/res/**'
+  #     - '.github/workflows/ubuntu.yml'
+  # pull_request:
+  #   paths:
+  #     - 'QtScrcpy/**'
+  #     - '!QtScrcpy/res/**'
+  #     - '.github/workflows/ubuntu.yml'
 jobs:
   build:
     name: Build
