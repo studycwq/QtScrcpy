@@ -149,7 +149,7 @@ bool Server::execute()
     args << QString("lock_video_orientation=%1").arg(QString::number(m_params.lockVideoOrientation));
     args << QString("tunnel_forward=%1").arg((m_tunnelForward ? "true" : "false"));
     if (m_params.crop.isEmpty()) {
-        args << "crop=-";
+        args << "crop=";
     } else {
         args << QString("crop=%1").arg(m_params.crop);
     }
@@ -176,7 +176,7 @@ bool Server::execute()
 #endif
 
     // adb -s P7C0218510000537 shell CLASSPATH=/data/local/tmp/scrcpy-server app_process / com.genymobile.scrcpy.Server 0 8000000 false
-    // mark: crop input format: "width:height:x:y" or - for no crop, for example: "100:200:0:0"
+    // mark: crop input format: "width:height:x:y" or "" for no crop, for example: "100:200:0:0"
     // 这条adb命令是阻塞运行的，m_serverProcess进程不会退出了
     m_serverProcess.execute(m_params.serial, args);
     return true;
